@@ -1,0 +1,40 @@
+#container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.box {
+    background-color: green;
+    color: black;
+    height: 100px;
+    width: 100px;
+    z-index: 1;
+    text-align: center;
+
+}
+
+.box:hover {
+    background-color: darkgreen
+}
+
+ion-icon[name="radio-button-off-outline"] {
+    z-index: 0;
+    font-size: 75px;
+    text-align: center;
+    margin: 12px;
+
+}
+
+ion-icon[name="close-outline"] {
+    z-index: 0;
+    font-size: 100px;
+    text-align: center;
+
+}
+
+ion-icon {
+    z-index: 0;
+    
+}
