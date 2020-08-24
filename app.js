@@ -5,7 +5,6 @@
 let boxID = 0;
 let turn = 0;
 let win = false;
-let board = null;
 let winningNumbers = null;
 let idArray = null;
 
@@ -42,7 +41,6 @@ idArray = [1,2,3,4,5,6,7,8,9];
 //========Adds X on click==============
 
 const addX = (event) => {
-    console.log(idArray)
     $(event.currentTarget).children().attr('name', 'close-outline')
     boxID = Number($(event.currentTarget).attr('id'))
     user.choices.push(boxID)
@@ -71,13 +69,11 @@ const addO = () => {
 //=========Checks on Winner==================
 
 const checkWin = (player1, player2) => {
-    if (player1.length>=board && player2.length>=board){
+    if (player1.length>=Math.sqrt($('#container').children().length) && player2.length>=Math.sqrt($('#container').children().length)){
         
         for (const element of winningNumbers) {
             let playerMatch = element.every(num=> player1.includes(num))
             let cpuMatch = element.every(num=> player2.includes(num))
-            console.log(playerMatch)
-            console.log(cpuMatch)
             if (playerMatch) {
                 setTimeout(() => {alert('You Win!')},50)
                 $('.box').off('click')
@@ -98,9 +94,12 @@ const checkWin = (player1, player2) => {
 }
 
 //==========Welcome && Create Board==========
-alert(`Welcome ${user.name}! The ${cpu.name} wants to play tic tac toe!`)
-board = Number(prompt(`Would you like to play 3x3, 4x4, or 5x5?`, `Enter (3), (4), or (5)`))
+//alert(`Welcome ${user.name}! The ${cpu.name} wants to play tic tac toe!`)
+
 const welcome = () => {
+    event.preventDefault();
+    $('#container').empty()
+    let board = Number($('input[type="text"]').val())
 if (board === 3){
     $('#container').css('height', '310px')
     $('#container').css('width', '310px')
@@ -123,6 +122,8 @@ for (let i=1; i<=board*board; i++){
     let $newIcon = $('<ion-icon name="">')
     $newDiv.append($newIcon)
 }
+$('.box').on('click', tictactoe)
+
 }
 
 //////////////////////////
@@ -131,12 +132,12 @@ for (let i=1; i<=board*board; i++){
 
 const tictactoe = (event) => {
 
-    if (turn < (Math.ceil(board*board/2))-1) {
+    if (turn < (Math.ceil($('#container').children().length/2))-1) {
         addX(event)
         addO()
         checkWin(user.choices, cpu.choices)
         
-    } else if (turn === (Math.ceil(board*board/2))-1){
+    } else if (turn === (Math.ceil($('#container').children().length/2))-1){
         addX(event)
         checkWin(user.choices, cpu.choices)
         if (win){
@@ -148,5 +149,5 @@ const tictactoe = (event) => {
     }
     turn++
 }
-welcome()
-$('.box').on('click', tictactoe)
+$('form').on('submit',welcome)
+//$('.box').on('click', tictactoe)
