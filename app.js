@@ -40,6 +40,7 @@ idArray = [1,2,3,4,5,6,7,8,9];
 
 //========Adds X on click==============
 
+$(()=> {
 const addX = (event) => {
     $(event.currentTarget).children().attr('name', 'close-outline')
     boxID = Number($(event.currentTarget).attr('id'))
@@ -151,3 +152,5 @@ const tictactoe = (event) => {
 }
 $('form').on('submit',welcome)
 //$('.box').on('click', tictactoe)
+
+})
