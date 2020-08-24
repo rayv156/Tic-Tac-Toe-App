@@ -102,18 +102,33 @@ const welcome = () => {
     $('#container').empty()
     let board = Number($('input[type="text"]').val())
 if (board === 3){
+    if ($(window).width>600){
     $('#container').css('height', '310px')
     $('#container').css('width', '310px')
+} else {
+    $('#container').css('height', '160px')
+    $('#container').css('width', '160px')
+}
     winningNumbers = [[1,2,3], [1,4,7], [7,8,9], [2,5,8], [3,6,9], [3,5,7], [4,5,6], [1,5,9]];
     idArray = [1,2,3,4,5,6,7,8,9];
 } else if (board === 4){
-    $('#container').css('height', '415px')
-    $('#container').css('width', '415px')
+    if ($(window).width>600){
+        $('#container').css('height', '415px')
+        $('#container').css('width', '415px')
+    } else {
+        $('#container').css('height', '215px')
+        $('#container').css('width', '215px')
+    }
     winningNumbers = [[1,2,3,4], [1,5,9,13], [13,14,15,16], [2,6,10,14], [3,7,11,15], [4,8,12,16], [5,6,7,8], [9,10,11,12], [1,6,11,16],[4,7,10,13]];
     idArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
 } else if (board === 5){
-    $('#container').css('height', '520px')
-    $('#container').css('width', '520px')
+    if ($(window).width>600){
+        $('#container').css('height', '520px')
+        $('#container').css('width', '520px')
+    } else {
+        $('#container').css('height', '260px')
+        $('#container').css('width', '260px')
+    }
     winningNumbers = [[1,2,3,4,5], [6,7,8,9,10], [11,12,13,14,15], [16,17,18,19,20], [21,22,23,24,25], [1,6,11,16,21], [2,7,12,17,22], [3,8,13,18,23], [4,9,14,19,24], [5,10,15,20,15], [1,7,13,19,25], [5,9,13,17,21]];
     idArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25];
 }
